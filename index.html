@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global e Individuais</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Container dos sliders individuais -->
+      <div class="container">
+        <div class="PB-range-slider-div">
+          <label for="radius-slideresq">Esq Cima:</label>
+          <input
+            type="range"
+            id="radius-slideresq"
+            class="PB-range-slider"
+            min="0"
+            max="200"
+            value="10"
+            step="10"
+          />
+          <span id="radius-valueesq" class="PB-range-slidervalue">10px</span>
+        </div>
+        <div class="PB-range-slider-div">
+          <label for="radius-sliderd">Dir Cima:</label>
+          <input
+            type="range"
+            id="radius-sliderd"
+            class="PB-range-slider"
+            min="0"
+            max="200"
+            value="10"
+            step="10"
+          />
+          <span id="radius-valued" class="PB-range-slidervalue">10px</span>
+        </div>
+        <div class="PB-range-slider-div">
+          <label for="radius-sliderc">Esq Baix:</label>
+          <input
+            type="range"
+            id="radius-sliderc"
+            class="PB-range-slider"
+            min="0"
+            max="200"
+            value="10"
+            step="10"
+          />
+          <span id="radius-valuec" class="PB-range-slidervalue">10px</span>
+        </div>
+        <div class="PB-range-slider-div">
+          <label for="radius-sliderdd">Dir Baix:</label>
+          <input
+            type="range"
+            id="radius-sliderdd"
+            class="PB-range-slider"
+            min="0"
+            max="200"
+            value="10"
+            step="10"
+          />
+          <span id="radius-valuedd" class="PB-range-slidervalue">10px</span>
+        </div>
+      </div>
+      <!-- Caixa que terá as bordas aplicadas -->
+      <div class="box"></div>
+
+      <!-- Container do slider global -->
+      <div class="global-container">
+        <label for="global-slider">Global:</label>
+        <input
+          type="range"
+          id="global-slider"
+          class="PB-range-slider vertical-slider"
+          min="0"
+          max="200"
+          value="10"
+          step="10"
+        />
+        <span id="global-value" class="PB-range-slidervalue">10px</span>
+      </div>
+    </div>
+
+    <script>
+      // Array com os sliders individuais
+      const individualSliders = [
+        {
+          element: document.getElementById("radius-slideresq"),
+          valueDisplay: document.getElementById("radius-valueesq"),
+          cssVar: "--border-radiusesq",
+        },
+        {
+          element: document.getElementById("radius-sliderd"),
+          valueDisplay: document.getElementById("radius-valued"),
+          cssVar: "--border-radiusd",
+        },
+        {
+          element: document.getElementById("radius-sliderc"),
+          valueDisplay: document.getElementById("radius-valuec"),
+          cssVar: "--border-radiusc",
+        },
+        {
+          element: document.getElementById("radius-sliderdd"),
+          valueDisplay: document.getElementById("radius-valuedd"),
+          cssVar: "--border-radiusdd",
+        },
+      ];
+
+      const globalSlider = document.getElementById("global-slider");
+      const globalValueDisplay = document.getElementById("global-value");
+
+      // Atualiza individualmente cada slider
+      individualSliders.forEach((sliderObj) => {
+        sliderObj.element.addEventListener("input", () => {
+          const value = sliderObj.element.value;
+          document.documentElement.style.setProperty(
+            sliderObj.cssVar,
+            value + "px"
+          );
+          sliderObj.valueDisplay.textContent = value + "px";
+        });
+      });
+
+      // Atualiza todos os sliders com o valor do slider global
+      globalSlider.addEventListener("input", () => {
+        const globalValue = globalSlider.value;
+        globalValueDisplay.textContent = globalValue + "px";
+        individualSliders.forEach((sliderObj) => {
+          sliderObj.element.value = globalValue;
+          document.documentElement.style.setProperty(
+            sliderObj.cssVar,
+            globalValue + "px"
+          );
+          sliderObj.valueDisplay.textContent = globalValue + "px";
+        });
+      });
+    </script>
+  </body>
+</html>

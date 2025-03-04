@@ -1,0 +1,105 @@
+:root { 
+  --border-radiusesq: 10px;
+  --border-radiusd: 10px;
+  --border-radiusc: 10px;
+  --border-radiusdd: 10px;
+}
+
+body {
+  font-family: Monocraft, Arial, sans-serif;
+  background-color: rgb(188, 159, 255);
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Wrapper para organizar o container e o slider global lado a lado */
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Container dos sliders individuais */
+.container {
+  background-color: rgb(54, 84, 252);
+  padding: 90px;
+  width: 300px;
+  height: 300px;
+  border-top-left-radius: var(--border-radiusesq);
+  border-top-right-radius: var(--border-radiusd);
+  border-bottom-left-radius: var(--border-radiusc);
+  border-bottom-right-radius: var(--border-radiusdd);
+  transition: border-radius 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.PB-range-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 5px;
+  background: rgb(16, 187, 255);
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.PB-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #2f00ff;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.PB-range-slider::-webkit-slider-thumb:hover {
+  box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.16);
+}
+
+.PB-range-slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #000000;
+  cursor: pointer;
+}
+
+.PB-range-slider-div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #2f00ff;
+  border-radius: 6px;
+  box-shadow: 0px 1px 2px 0px #1b03911f;
+}
+
+.PB-range-slidervalue {
+  font-weight: 600;
+}
+
+/* Estilo para o slider global vertical */
+.vertical-slider {
+  writing-mode: bt-lr;
+  -webkit-appearance: slider-vertical;
+  appearance: slider-vertical;
+  height: 200px;
+}
+
+.global-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
